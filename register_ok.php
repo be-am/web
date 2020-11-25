@@ -1,8 +1,6 @@
 <?php
 
-ini_set("error_reporting", E_ALL);
 $con = mysqli_connect('localhost', 'bin', '1234', 'blog');
-
 
 
 $userID = $_POST['userID'];
@@ -20,9 +18,9 @@ $query = "INSERT INTO USER_INFO(userID, userPassword, userName)
 
 $stmt = mysqli_query($con,$query);
 
-
 if($stmt=== true) {
-	header("Location: index.php");
+    echo '가입에 성공하였습니다. <a href ="index.php">돌아가기</a>';
 } else {
     echo "fail to register";
+    error_log(mysqli_error($con));
 }

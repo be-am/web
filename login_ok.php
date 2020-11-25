@@ -1,5 +1,5 @@
 <?php
-
+    
     $con =mysqli_connect('localhost','bin','1234','blog');
 
     $userID=$_POST['userID'];
@@ -16,9 +16,9 @@
         $_SESSION['userID']=$userID;
         $_SESSION['isLogged']= 1;
         header("Location: index.php");
-    }else{
+    }
+    else{
         echo "login fail";
     }
-    
 
 ?>
