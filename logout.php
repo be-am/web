@@ -7,17 +7,10 @@
         echo "로그 아웃 되었습니다.";
     }
     else{
-        echo "이미 로그아웃 상태입니다..";
+        echo "<p>이미 로그아웃 상태입니다..</p>";
     }
+
+    echo '<a href="index.php">로그인 화면으로 돌아가기</a>';
 
 ?>
 
-<!DOCTYPE html>
-<html >
-<head></head>
-<body>
-    <form action="index.php" method="post" >
-        <button type="submit">로그인 화면으로 돌아가기</button>
-    </form>
-</body>
-</html>

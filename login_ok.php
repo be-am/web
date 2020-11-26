@@ -19,6 +19,7 @@
     }
     else{
         echo "login fail";
+        echo '<a href="index.php">돌아가기</a>';
     }
 
 ?>
