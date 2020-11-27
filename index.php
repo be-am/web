@@ -1,7 +1,12 @@
 <?php
+	
+	error_reporting(E_ALL);
+
+    ini_set("display_errors", 1);
+	
 	session_start();
 	$con =mysqli_connect('localhost','bin','1234','blog');
-	$sql ="SELECT * FROM post";
+	$sql ="SELECT * FROM post  ORDER BY id desc";
 	$result = mysqli_query($con,$sql);
 	
 	$login='';
@@ -14,12 +19,12 @@
 	
 	$list='';
 	while($row=mysqli_fetch_array($result)){
-
-		$list=$list."<div>{$row['postID']}</div>";
-		$list= $list."<div><a href=\"in_post.php?title={$row['title']}\">{$row['title']}</a></div>";
+		echo $row['title'];
+		$list.="<div>{$row['postID']}</div>";
+		$list.="<div><a href=\"post_in.php?title={$row['title']}\">{$row['title']}</a></div>";
 	}
 
-	
+
 ?>
 
 <!DOCTYPE html>
