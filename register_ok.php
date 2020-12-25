@@ -1,13 +1,9 @@
 <?php
-
-$con = mysqli_connect('localhost', 'bin', '1234', 'blog');
-
+include_once "db.php";
 
 $userID = $_POST['userID'];
 $userPassword = $_POST['userPassword'];
 $userName = $_POST['userName'];
-
-
 
 $query = "INSERT INTO USER_INFO(userID, userPassword, userName) 
     VALUES(
@@ -16,7 +12,7 @@ $query = "INSERT INTO USER_INFO(userID, userPassword, userName)
     '$userName'
     )";
 
-$stmt = mysqli_query($con,$query);
+$stmt = mq($query);
 
 if($stmt=== true) {
     echo '가입에 성공하였습니다.' ;

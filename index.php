@@ -1,13 +1,8 @@
 <?php
-	
-	error_reporting(E_ALL);
+	include_once "db.php";
 
-    ini_set("display_errors", 1);
-	
-	session_start();
-	$con =mysqli_connect('localhost','bin','1234','blog');
 	$sql ="SELECT * FROM post  ORDER BY id desc";
-	$result = mysqli_query($con,$sql);
+	$result = mq($sql);
 	
 	$login='';
 	if($_SESSION['isLogged']===1){
@@ -19,9 +14,8 @@
 	
 	$list='';
 	while($row=mysqli_fetch_array($result)){
-		echo $row['title'];
 		$list.="<div>{$row['postID']}</div>";
-		$list.="<div><a href=\"post_in.php?title={$row['title']}\">{$row['title']}</a></div>";
+		$list.="<div><a href=\"post_in.php?id={$row['id']}\">{$row['title']}</a></div>";
 	}
 
 

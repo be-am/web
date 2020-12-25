@@ -1,20 +1,12 @@
 <?php
     
-    error_reporting(E_ALL);
+    include_once "db.php";
 
-    ini_set("display_errors", 1);
-
-    
-    session_start();
-	$con =mysqli_connect('localhost','bin','1234','blog');
     $sql ="SELECT * FROM post";
-
-	$result = mysqli_query($con,$sql);
+	$result = mq($sql);
     
-
-
     $login='';
-    $title=$_GET['title'];
+    $id=$_GET['id'];
     
     
 	if($_SESSION['isLogged']===1){
@@ -31,8 +23,7 @@
     $list.="<span>내용</span>".'</div>';
     
     while($row=mysqli_fetch_array($result)){
-		
-        if($row['title']===$title){
+        if($row['id']===$id){
             $list=$list."<div>{$row['postID']}</div>";
 		    $list= $list."<div>{$row['title']}</div>";
             $list= $list."<div>{$row['content']}</div>";
@@ -46,11 +37,16 @@
     echo "$list";
 
     
+    if($_SESSION['isLogged']===1){
+        echo '<p>'."<a href=update.php?id=$id>update</a>".'<p>';
+        echo '<p>'."<a href=delete.php?id=$id>delete</a>".'<p>';
+    }
     
-    echo '<p>'."<a href=update.php?id=$id>update</a>".'<p>';
-    echo '<p>'."<a href=delete.php?id=$id>delete</a>".'<p>';
     
     echo '<p>'."<a href=index.php>되돌아가기</a>".'<p>';
+
+
+    
 
    
 

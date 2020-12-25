@@ -1,18 +1,13 @@
 <?php
-    session_start();
-	$con =mysqli_connect('localhost','bin','1234','blog');
+    include_once "loginCheck.php";
     $id=$_GET['id'];
  
     $sql ="SELECT * FROM post where id=$id";
-	$result = mysqli_query($con,$sql);
+	$result = mq($sql);
     $login='';
 
-	if($_SESSION['isLogged']===1){
-        $login= '<li>' .$_SESSION['userID']."님 로그인 중입니다.".'</li>';		 
-    }	
-
-    $row=mysqli_fetch_array($result);
-	
+    $row=mysqli_fetch_array($result);		 
+  
 ?>
 
 <!DOCTYPE html>

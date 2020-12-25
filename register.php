@@ -2,6 +2,7 @@
 <html >
 <head></head>
 <body>
+    <?= include_once "loginCheck.php"?>
     <form action="register_ok.php" method="post">
         아이디:<input type="text" name="userID" />
 		비밀번호:<input type="password" name="userPassword" />

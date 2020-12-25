@@ -1,8 +1,5 @@
 <?php
-
-    session_start();
-    $con =mysqli_connect('localhost','bin','1234','blog');
-
+    include_once "loginCheck.php";
 
     $postID=$_SESSION['userID'];
 
@@ -12,7 +9,7 @@
 
     $sql="UPDATE `post` SET title='$title', content='$content' where id=$id";
 
-    $result=mysqli_query($con,$sql);
+    $result=mq($sql);
     
 
     if($result){
