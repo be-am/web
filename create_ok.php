@@ -9,8 +9,7 @@
     $sql="INSERT INTO post(`postID`,`title`,`content`) VALUES('$postID', '$title', '$content')";
     
     $result=mq($sql);
-    
-    
+        
     if($result){
         echo "게시물이 게시 되었습니다.";
     }

@@ -13,7 +13,7 @@
     
 
     if($result){
-        echo "게시물이 게시 되었습니다.";
+        echo "게시물이 수정 되었습니다.";
     }
     else{
         echo 'fail';

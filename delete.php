@@ -1,14 +1,14 @@
 <?php
-    include_once "db.php"; 
+    include_once "validation.php"; 
+
     $id=$_GET['id'];
-    $query="select * from post WHERE id='$id'";
+    $query="SELECT * from post WHERE id='$id'";
     $postID=mq($query);
     $row=mysqli_fetch_array($postID);
+    validate($row['postID']);
 
-    if($_SESSION['userID']===$row['postID']){
-        $sql="DELETE FROM `post` WHERE id=$id";
-    }
-
+    $sql="DELETE FROM post WHERE id='$id'";
+    
     $result =mq($sql);
     
     if($result){

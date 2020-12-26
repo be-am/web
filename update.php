@@ -1,13 +1,13 @@
 <?php
     include_once "loginCheck.php";
+    include_once "validation.php";
     $id=$_GET['id'];
- 
+
     $sql ="SELECT * FROM post where id=$id";
 	$result = mq($sql);
-    $login='';
 
     $row=mysqli_fetch_array($result);		 
-  
+    validate($row['postID']);
 ?>
 
 <!DOCTYPE html>
