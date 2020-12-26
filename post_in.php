@@ -27,28 +27,51 @@
             $list=$list."<div>{$row['postID']}</div>";
 		    $list= $list."<div>{$row['title']}</div>";
             $list= $list."<div>{$row['content']}</div>";
-            $id=$row['id'];
         }
-        
     }
     
     
     echo "$login";
     echo "$list";
 
+    $comment='';
+    $sql="SELECT * FROM comment";
+    $query=mq($sql);
     
+    while($row=mysqli_fetch_array($query)){
+        if($row['postID']==$id){
+            $comment.="<div>";
+            $comment.="{$row['commentID']}";
+            $comment.="{$row['comment']}";
+            $comment.="</div>";
+        }
+    }
+
+    
+    $createC='';
     if($_SESSION['isLogged']===1){
-        echo '<p>'."<a href=update.php?id=$id>update</a>".'<p>';
-        echo '<p>'."<a href=delete.php?id=$id>delete</a>".'<p>';
+        echo '<p>'."<a href=update.php?id=$id>게시글update</a>".'<p>';
+        echo '<p>'."<a href=delete.php?id=$id>게시글delete</a>".'<p>';
+      
     }
     
-    
-    echo '<p>'."<a href=index.php>되돌아가기</a>".'<p>';
 
 
-    
+    echo '<div>'."<a href=index.php>되돌아가기</a>".'<div>';
 
-   
-
-	
 ?>
+
+<html lang="en">
+<head>
+</head>
+<body> 
+    <form action="createComment.php?id=<?=$id?>" method="post">
+        <div><input type="text" name="comment" placeholder="댓글 입력"/></div>
+        <div><input type="submit"/></div>
+    </form>
+
+    <div>
+        <div><?=$comment?></div>
+    </div>
+</body>
+</html>
