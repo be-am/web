@@ -43,6 +43,10 @@
             $comment.="<div>";
             $comment.="{$row['commentID']}";
             $comment.="{$row['comment']}";
+            $comment.='<form action="createComment.php?id=<?=$id?>" method="post">
+            <div><input type="text" name="comment" placeholder="댓글 입력"/></div>
+            <div><input type="submit"/></div>
+            </form>';
             $comment.="</div>";
         }
     }
