@@ -5,13 +5,7 @@ $userID = $_POST['userID'];
 $userPassword = $_POST['userPassword'];
 $userName = $_POST['userName'];
 
-$query = "INSERT INTO USER_INFO(userID, userPassword, userName) 
-    VALUES(
-    '$userID',
-    '$userPassword',
-    '$userName'
-    )";
-
+$query = "INSERT INTO USER_INFO(userID, userPassword, userName)VALUES('$userID','$userPassword','$userName')";
 $stmt = mq($query);
 
 if($stmt=== true) {

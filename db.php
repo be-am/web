@@ -1,5 +1,6 @@
 <?php
-$con =mysqli_connect('localhost','bin','1234','blog');
+
+$con = mysqli_connect('localhost','bin','1234','blog');
 session_start();
 
 function mq($query){

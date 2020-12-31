@@ -1,22 +1,22 @@
 <?php
-	include_once "db.php";
+include_once "db.php";
 
-	$sql ="SELECT * FROM post  ORDER BY id desc";
-	$result = mq($sql);
+$sql = "SELECT * FROM post  ORDER BY id desc";
+$result = mq($sql);
 	
-	$login='';
-	if($_SESSION['isLogged']===1){
-		$login= '<li>' .$_SESSION['userID']."님 로그인 중입니다.".'</li>'.'<li><a href="create.php">게시물 올리기 </a></li>';		 
-	}	
-	else{
-		$login= "로그인을 해주세요".'</br>';
-	}
+$login='';
+if($_SESSION['isLogged']===1){
+	$login= '<li>' .$_SESSION['userID']."님 로그인 중입니다.".'</li>'.'<li><a href="create.php">게시물 올리기 </a></li>';		 
+}	
+else{
+	$login= "로그인을 해주세요".'</br>';
+}
 	
-	$list='';
-	while($row=mysqli_fetch_array($result)){
-		$list.="<div>{$row['postID']}</div>";
-		$list.="<div><a href=\"post_in.php?id={$row['id']}\">{$row['title']}</a></div>";
-	}
+$list='';
+while($row = mysqli_fetch_array($result)){
+	$list.="<div>{$row['postID']}</div>";
+	$list.="<div><a href=\"post_in.php?id={$row['id']}\">{$row['title']}</a></div>";
+}
 
 
 ?>

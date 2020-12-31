@@ -1,22 +1,27 @@
 <?php
-    include_once "validation.php";
-    
-    $commentID=$_GET['commentID'];
-    echo "$commentID";
-    
-    validate($commentID);
+include_once "validation.php";
+include_once "url_create.php";
+include_once "directAccess.php";
 
-    $sql="SELECT * FROM comment WHERE id=$_GET[id]";
+$validateID = $_GET['commentID'];
+    
+validate($validateID);
 
-    $return= mq($sql);
-    $row=mysqli_fetch_array($return);
+$sql = "SELECT * FROM comment WHERE id=$_GET[id]";
+
+$return = mq($sql);
+$row = mysqli_fetch_array($return);
+
+
+$url_query = createUrlQuery("updateCommentOk.php",array('commentID',$row['commentID'],'id',$row['id'],'postID',$_GET['postID']));
+
 ?>
 
 <html lang="en">
 <head>
 </head>
 <body>
-    <form action="updateCommentOk.php?commentID=<?=$row['commentID']?>&id=<?=$row['id']?>&postID=<?=$_GET['postID']?>" method="post">
+    <form action="<?=$url_query?>" method="post">
         <input type="text" name="comment" value="<?=$row['comment']?>"/>
         <input type="submit"/>
     </form>
