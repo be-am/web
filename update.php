@@ -2,10 +2,11 @@
     include_once "loginCheck.php";
     include_once "validation.php";
     include_once "url_create.php";
+    include_once "apis/query.php";
 
     $id = $_GET['id'];
 
-    $sql = "SELECT * FROM post where id=$id";
+    $sql = selectId('post','id',$id);
 	$result = mq($sql);
 
     $row = mysqli_fetch_array($result);		 

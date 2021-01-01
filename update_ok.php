@@ -1,12 +1,17 @@
 <?php
+include_once "db.php";
 include_once "loginCheck.php";
+include_once "apis/query.php";
+
+
 $postID = $_SESSION['userID'];
 
 $title = $_POST['title'];
 $id = $_GET['id'];
 $content = $_POST['content'];
 
-$sql = "UPDATE `post` SET title='$title', content='$content' where id=$id";
+$value = 'title='."'$title'".', content='."'$content'";
+$sql = update('post',$value,'id',$id);
 
 $result = mq($sql);
 

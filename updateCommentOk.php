@@ -1,6 +1,6 @@
 <?php
 include_once "loginCheck.php";
-include_once "directAccess.php";
+include_once "updateDirectAccess.php";
 
 $comment = $_POST['comment'];
 

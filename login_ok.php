@@ -4,7 +4,6 @@ include_once "db.php";
 $userID = $_POST['userID'];
 $userPassword = $_POST['userPassword'];
     
-
 $query = "select * from USER_INFO WHERE userID='$userID' and userPassword='$userPassword'";
 
 $stmt = mq($query);

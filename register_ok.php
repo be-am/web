@@ -1,14 +1,18 @@
 <?php
 include_once "db.php";
+include_once "apis/query.php";
 
 $userID = $_POST['userID'];
 $userPassword = $_POST['userPassword'];
 $userName = $_POST['userName'];
 
-$query = "INSERT INTO USER_INFO(userID, userPassword, userName)VALUES('$userID','$userPassword','$userName')";
+$table = "USER_INFO(userID,userPassword,userName)";
+$value = "'$userID'".","."'$userPassword'".","."'$userName'";
+$query = insult($table,$value);
+
 $stmt = mq($query);
 
-if($stmt=== true) {
+if($stmt) {
     echo '가입에 성공하였습니다.' ;
 } else {
     echo "fail to register";

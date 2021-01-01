@@ -1,7 +1,9 @@
 <?php
 include_once "db.php";
+include_once "apis/query.php";
 
-$sql = "SELECT * FROM post  ORDER BY id desc";
+$sql = select('post');
+$sql .= " ORDER BY id desc";
 $result = mq($sql);
 	
 $login='';

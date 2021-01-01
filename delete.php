@@ -1,15 +1,17 @@
 <?php
 include_once "validation.php";
-include_once "directAccess.php"; 
+include_once "apis/query.php";
 
 $id = $_GET['id'];
-$query = "SELECT * from post WHERE id='$id'";
+$table = 'post';
+
+$query = selectId($table,'id',$id);
 $postID = mq($query);
+
 $row = mysqli_fetch_array($postID);
 validate($row['postID']);
 
-$sql = "DELETE FROM post WHERE id='$id'";
-    
+$sql = delete($table,$id);
 $result = mq($sql);
     
 if($result){

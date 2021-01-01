@@ -2,12 +2,13 @@
 include_once "validation.php";
 include_once "url_create.php";
 include_once "directAccess.php";
+include_once "apis/query.php";
 
 $validateID = $_GET['commentID'];
     
 validate($validateID);
 
-$sql = "SELECT * FROM comment WHERE id=$_GET[id]";
+$sql = selectId('comment','id',$_GET['id']);
 
 $return = mq($sql);
 $row = mysqli_fetch_array($return);

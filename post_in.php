@@ -1,11 +1,13 @@
 <?php
 include_once "db.php";
 include_once "url_create.php";
+include_once "apis/query.php";
 
 $id = $_GET['id'];
-$sql = "SELECT * FROM post WHERE id='$id'";
+$sql = selectId('post','id',$id);
+
 $result = mq($sql);
-$login='';
+$login = '';
     
 if($_SESSION['isLogged']===1){
     $login= '<li>' .$_SESSION['userID']."님 로그인 중입니다.".'</li>';		  
@@ -28,8 +30,7 @@ $list = $list."<div>{$row['content']}</div>";
 echo "$login";
 echo "$list";
 
-$comment = '';
-$sql = "SELECT * FROM comment WHERE postID='$id'";
+$sql = selectId('comment','postID',$id);
 $query = mq($sql);
 
 while($row = mysqli_fetch_array($query)){
